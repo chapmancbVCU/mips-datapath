@@ -1,0 +1,22 @@
+LiBRARY IEEE;
+USE work.ALL;
+USE IEEE.std_logic_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY MULT IS
+    PORT(A       : IN  STD_LOGIC;
+         B       : IN  STD_LOGIC;
+         PRODUCT : OUT STD_LOGIC);
+END ENTITY MULT;
+
+ARCHITECTURE arch OF MULT IS
+    SIGNAL temp : std_logic := '0';
+    
+BEGIN
+    process(A, B)
+    BEGIN
+       temp = A * B; 
+    END
+END ARCH;
+

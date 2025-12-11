@@ -1,0 +1,101 @@
+-- tb_npkips.vhd
+-----------------------------------------------------------------------
+--  Demonstrates use of Text I/O - Two procedures load_mem and dump_mem
+--  are used. Load_mem reads the file m_in.txt into a
+--  memory array "mem". 
+--  The procedure dump_mem writes the contents of mem to the 
+--  file m_out.txt.
+-----------------------------------------------------------------------
+LIBRARY IEEE;
+USE work.all;
+USE IEEE.Std_Logic_1164.all; 
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL; 
+USE std.textio.all;
+use ieee.std_logic_textio.all;
+
+ENTITY TB IS END ENTITY TB;
+
+ARCHITECTURE TEST OF TB IS
+    CONSTANT WordSize : natural := 32;
+    CONSTANT MemSize : natural := 16#20#; 
+    SUBTYPE Word IS STD_LOGIC_VECTOR(WordSize - 1 downto 0);
+    type MEM_array is array (natural range 0 to MemSize-1) of Word;
+    SIGNAL mem: mem_array;
+    SIGNAL RES, CLK: std_logic := '0';
+    SIGNAL addr, data: std_logic_vector(31 downto 0);
+    SIGNAL iaddr: integer range 0 to MemSize - 1;
+    SIGNAL nRD, nWR: std_logic := '1';
+BEGIN
+    U1: entity npkips port map  -- in nplips.vhd
+       (res,
+        clk,
+        addr,
+        data,
+        nrd,
+        nwr
+       );
+    RES <= '1', '0' after 10 ns;
+    CLK <= '1' when RES = '1' else not CLK after 10 ns;
+    iaddr <= CONV_INTEGER(addr)/4;
+-- Memory setup    
+-- Load memory form file m_in.txt
+    DO_MEM: process(RES, nRD, nWR, addr) is
+        procedure LOAD_MEM is --return mem_array is
+--            variable mem: mem_array;
+            file my_file: text open read_mode is "m_in.txt";
+            variable L: line;
+            variable nAddr: natural;
+            variable Addr: Word; 
+            variable data: Word;
+        begin
+            naddr := 0;
+            while not endfile(my_file) loop
+                readline(my_file,L);
+                hread(L, Data);
+                MEM(naddr) <= Data;
+                naddr := naddr + 1;
+            end loop;
+        end LOAD_MEM;
+-- Write memory to file m_out.txt     
+        procedure DUMP_MEM is
+            file my_file: text open write_mode is "m_out.txt";
+            variable L: line;
+            variable str_out: string (1 to 8);
+            variable i: natural := 0;
+            variable addr, data: Word;
+        begin
+             for i in 0 to MEM'length - 1 loop
+                Addr := conv_std_logic_vector(i*4,32);
+                hwrite (L, Addr);
+                write (L, ' ');
+                Data := MEM(i);
+                hwrite (L, Data); 
+                writeline(my_file,L);
+             end loop;
+        end DUMP_MEM;
+    begin
+        if RES'EVENT and RES = '1' then
+            LOAD_MEM;
+        end if;
+        
+       if nWR'EVENT and nWR = '1' then
+            DUMP_MEM;
+        end if;
+ --  MEM Read and write
+        if nWR = '0' then
+            mem(iaddr) <= data;
+        elsif nRD = '0' then
+            data <= mem(iaddr);
+       else
+            data <= (others => 'Z');
+        end if;
+    end process;
+end architecture test;
+
+
+
+
+
+
+

@@ -1,0 +1,145 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\Chad\Desktop\Lab 6
+Ecu
+Z0 w1256927706
+Z1 DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+Z2 DP std textio K]Z^fghZ6B=BjnK5NomDT3
+Z3 DP work pkg_npkips YJ<mbzmNY:@L2:K]V:MdS2
+Z4 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+Z5 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+Z6 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+Z7 dC:\Users\Chad\Documents\VCU\Fall_2009\EGRE_426\Lab Assignments\Lab 6
+Z8 8C:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/NPKIPS_CU.vhd
+Z9 FC:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/NPKIPS_CU.vhd
+l0
+L7
+V@fF6Q>i=cRAeVj57]3akC1
+Z10 OX;C;6.3c;37
+32
+Z11 o-work work -O0
+Z12 tExplicit 1
+Aarch
+R1
+R2
+R3
+R4
+R5
+R6
+Z13 DE work cu @fF6Q>i=cRAeVj57]3akC1
+l18
+L16
+V09jURWOTXL:Hn6l`9Nn7m1
+R10
+32
+Z14 M6 ieee std_logic_1164
+Z15 M5 ieee std_logic_arith
+Z16 M4 ieee std_logic_unsigned
+Z17 M3 work pkg_npkips
+Z18 M2 std textio
+Z19 M1 ieee std_logic_textio
+R11
+R12
+Enpkips
+Z20 w1257188899
+R1
+R2
+R3
+R4
+R5
+R6
+R7
+Z21 8C:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/npkips.vhd
+Z22 FC:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/npkips.vhd
+l0
+L12
+V`XH>dG1Oi^hR7TdY:E;RH0
+R10
+32
+R11
+R12
+Aarch
+R13
+R1
+R2
+R3
+R4
+R5
+R6
+Z23 DE work npkips `XH>dG1Oi^hR7TdY:E;RH0
+l68
+L22
+VD04kFVIzj78;f0hzXPAl?2
+R10
+32
+R14
+R15
+R16
+R17
+R18
+R19
+R11
+R12
+Ppkg_npkips
+R1
+R2
+R4
+R5
+R6
+w1256856020
+R7
+8C:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/pkg_npkips_mem.vhd
+FC:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/pkg_npkips_mem.vhd
+l0
+L9
+VYJ<mbzmNY:@L2:K]V:MdS2
+R10
+32
+M5 ieee std_logic_1164
+M4 ieee std_logic_arith
+M3 ieee std_logic_unsigned
+R18
+R19
+R11
+R12
+Etb
+Z24 w1256859037
+R1
+R2
+R4
+R5
+R6
+R7
+Z25 8C:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/tb_npkips.vhd
+Z26 FC:/Users/Chad/Documents/VCU/Fall_2009/EGRE_426/Lab Assignments/Lab 6/tb_npkips.vhd
+l0
+L17
+Vz]P^R]Ca:3O=nnZRboj1P0
+R10
+32
+R11
+R12
+Atest
+R3
+R23
+R1
+R2
+R4
+R5
+R6
+Z27 DE work tb z]P^R]Ca:3O=nnZRboj1P0
+l29
+L19
+Z28 Vie0=P4LoNbTQTXEOhZNV_2
+R10
+32
+R14
+R15
+R16
+Z29 M3 std textio
+Z30 M2 ieee std_logic_textio
+Z31 M1 work pkg_npkips
+R11
+R12

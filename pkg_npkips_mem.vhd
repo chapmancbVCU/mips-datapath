@@ -1,0 +1,50 @@
+-- PKG_NPKIPS_mem.VHD Version 1.2
+LIBRARY IEEE;
+USE work.all;
+USE IEEE.Std_Logic_1164.all; 
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL; 
+USE std.textio.all;
+use ieee.std_logic_textio.all;
+PACKAGE pkg_npkips IS
+    TYPE A_State IS (S0, S1, S2, S3, S4, S5, S6,
+                     S7, S8, S9, S10, S11, S12);
+                     
+--    SIGNAL State, Next_State : A_State;
+    CONSTANT MemSize : POSITIVE := 1024;
+    SUBTYPE Word IS STD_LOGIC_VECTOR(31 - 1 downto 0);
+    type MEM_array is array (natural range 0 to MemSize-1) of Word;
+    SUBTYPE Opcode is STD_LOGIC_vector(5 downto 0);
+    SUBTYPE rsAddr is STD_LOGIC_vector(4 downto 0);
+    SUBTYPE rtAddr is STD_LOGIC_vector(4 downto 0);
+    SUBTYPE rdAddr is STD_LOGIC_vector(4 downto 0);
+    SUBTYPE RegAddr is STD_LOGIC_vector(4 downto 0);
+    SUBTYPE Func   is STD_LOGIC_vector(5 downto 0);
+    SUBTYPE shamt  is STD_LOGIC_vector(4 downto 0);
+    SUBTYPE Addr   is STD_LOGIC_vector(25 downto 0);
+    SUBTYPE nofst  is STD_LOGIC_vector(15 downto 0);
+-- Mapping of instructions to opcodes. See Apendix A.
+    CONSTANT Op_lw      :Opcode := B"100011";            
+    CONSTANT Op_sw      :Opcode := B"101011";            
+    CONSTANT Op_beq     :Opcode := B"000100";            
+    CONSTANT Op_addi    :Opcode := B"001000"; 
+    CONSTANT Op_andi    :Opcode := B"001100";
+    CONSTANT Op_ori     :Opcode := B"001101";
+    CONSTANT Op_xori    :Opcode := B"001110";
+    CONSTANT Op_slti    :Opcode := B"001010";
+    CONSTANT Op_or      :Opcode := B"000000";            
+    CONSTANT Op_slt     :Opcode := B"000000";            
+    CONSTANT Op_j       :Opcode := B"000010";
+                
+    CONSTANT Op_R_type  :Opcode := B"000000";            
+    CONSTANT Func_add   :Func   := B"000000";            
+    CONSTANT Func_sub   :Func   := B"010010";            
+    CONSTANT Func_and   :Func   := B"000100";
+    CONSTANT Func_or    :Func   := B"010101";            
+    CONSTANT Func_slt   :Func   := B"011010";
+    CONSTANT Func_null  :Func   := B"000000";
+    CONSTANT Func_jr    :Func   := B"001000";
+    CONSTANT Func_xor   :Func   := B"100110";
+    CONSTANT Func_nor   :Func   := B"100111";
+
+END PACKAGE pkg_npkips;
