@@ -1,0 +1,12 @@
+20001001        addi $0, $0, 4097   # try to put garbage in $0
+20024002        addi $2, $0, 16386  # put 0x00004002 in $2
+2003fff3        addi $3, $0, -13    # put 0xfffffff3 in $3
+ac000040        sw $0, 0x40($0)     # clear sum in M(10H)
+2009000a        addi $9, $0, 10     # put max count in R9
+8c080040  loop: lw $8, 0x40($0)     # get old sum
+01094000        add $8, $8, $9      # update sum
+ac080040        sw $8, 0x40($0)     # save sum
+2129ffff        addi $9, $9, -1     # decrement count
+11200001        beql $9, $0, done   # check if count = 0
+08000005        j loop              # if not loop
+0800000b  done: j done              # when done M(10H) = 37H
